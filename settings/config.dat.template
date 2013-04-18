@@ -1,0 +1,58 @@
+# Back end operation information 
+
+ ###############################################
+# THIS FILE HAS TO BE FILLED OUT AND RENAMED TO #
+# CONFIG.DAT FOR THE SITE TO WORK               #
+# KEEP YOUR OWN LOCAL COPY, DON'T ADD IT TO     #
+# THE REPO                                      #
+ ###############################################
+
+#
+# mySQL Settings 
+#
+mysql_user = hvz
+mysql_pass = 
+mysql_db = hvz
+mysql_db_host = 
+
+#
+# Twitter Settings
+#
+twit_cKey = 
+twit_cSecret = 
+twit_aKey =
+twit_aSecret =
+
+#
+# Table names 
+#
+user_table = users
+admin_table = admin
+var_table = variables
+time_table = timezone
+content_table = content
+message_table = messages
+blog_table = blog
+#
+# Web page location settings 
+#
+login_goto = hub.php
+logout_goto = index.php
+admin_login_goto = index.php
+
+#
+# Setup information
+#
+# You can change id_length to a more suitable number if 
+# your game is appropriately large or small. However, 
+# and this is just my personal opinion, if you change it 
+# DURING registration, someone should beat you bloody.  
+#
+reg_admin = 
+id_length = 7
+
+#
+# Pagination records
+#
+page_records=30
+
