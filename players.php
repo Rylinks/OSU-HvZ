@@ -119,7 +119,14 @@
 	$ozkills = $ozkills[0];
 	
 	// player query
-	$player_query = "SELECT * FROM $table_u $faction UNION SELECT NULL , NULL , NULL , NULL , NULL , -1, NULL , NULL , $ozkills, NULL , NULL ,  'Original',  'Zombies', NULL , NULL , NULL , 0, 0, 0 ORDER BY $sort_by $order";
+	if (!$reveal_oz){
+	$player_query = "SELECT pic_path,state,killed,feed,kills,fname,lname,starved FROM $table_u $faction AND state != -2 UNION ALL
+	SELECT pic_path,1,NULL,TIMESTAMP '0-00-00 00:00:00',0,fname,lname,starved FROM $table_u $faction AND state = -2 UNION 
+	SELECT NULL , -1 , NULL , NULL , $ozkills, 'Original',  'Zombies', NULL
+	ORDER BY $sort_by $order";
+	} else {
+	$player_query = "SELECT pic_path,state,killed,feed,kills,fname,lname,starved FROM $table_u $faction";
+	}
 	$ret = mysql_query($player_query);
 	
 	// count query
