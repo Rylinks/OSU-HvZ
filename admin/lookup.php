@@ -52,14 +52,14 @@
       foreach ($results as $value){
         print($value.'<br>');
       }
-      print('<a href=\'index.php\'>Go Back</a>');
+      print('<a href=osundead.com/\'index.php\'>Go Back</a>');
       print('</body></center>');
   } else {
     ?>
     ID: <form name="lookupForm" action="lookup.php" method="post">
     <input type="text" name="id" size=20 maxlength=20><br>
     <input type="submit" name="submit" value="Lookup"><br>
-    <a href=\'index.php\'>Go Back</a>
+    <a href=../\'index.php\'>Go Back</a>
     </body></center>
     <?
   }
