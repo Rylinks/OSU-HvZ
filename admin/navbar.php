@@ -53,6 +53,7 @@ else
 <a href='players.php' target='display'>Edit Players</a><br>
 <a href="addplayer.php" target='display'>Add Player</a><br>
 <a href='mailer.php' target='display'>Mailing Lists</a><br>
+<a href='lookup.php' target='display'>ID Lookup</a><br>
 <br>
 <strong>Website Management</strong>
 <br>

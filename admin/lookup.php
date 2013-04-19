@@ -22,7 +22,7 @@
     $bad_id  = $_POST['id'];
     $bad_len = strlen($bad_id);
     $test = '';
-    $results = [];
+    $results = array();
     
     if (abs($id_len - $bad_len) > 1){
       print ('Error: id length is incorrect');
@@ -40,12 +40,12 @@
       $length      = 1;
     }
 
-      for ($ii=0; $i < $bad_len $ii++){
+      for ($ii=0; $ii < $bad_len ;$ii++){
         $test = substr_replace($bad_id, $replacement, $ii, $length);
         $ret = mysql_query("SELECT id, fname, lname FROM $table_u WHERE id LIKE '$test'");
         
         while ($row = mysql_fetch_assoc($ret)){
-          $results[] = $row['fname']." "$row['lname']." | ".$row['id'];
+          $results[] = $row['fname']." ".$row['lname']." | ".$row['id'];
         }
       }
       
