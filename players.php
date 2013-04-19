@@ -114,9 +114,12 @@
 	$records = $config['page_records'];
 	$start = ($page) * $records;
 	$limit = " LIMIT ".$start.", ".$records;
+	$ozkills = mysql_fetch_array(mysql_query('SELECT COUNT(kills) FROM USERS where state=-2'));
+	$ozkills = $ozkills[0];
+	
 	
 	// player query
-	$player_query = "SELECT * FROM $table_u $faction ORDER BY $sort_by $order";
+	$player_query = "SELECT * FROM $table_u $faction UNION SELECT NULL , NULL , NULL , NULL , NULL , -1, NULL , NULL , $ozkills, NULL , NULL ,  'Original',  'Zombies', NULL , NULL , NULL , 0, 0, 0 ORDER BY $sort_by $order";
 
 	$ret = mysql_query($player_query);
 	
