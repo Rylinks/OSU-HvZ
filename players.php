@@ -14,8 +14,10 @@
 	$row = mysql_fetch_array($ret);
 	date_default_timezone_set($row['zone']);
 	
-	
+	$reveal_oz = mysql_fetch_array(mysql_query("select value FROM $table_v WHERE zkey='oz-revealed'"));
+	$reveal_oz = $reveal_oz[0];
 	// update the starvation times and oz reveal (every 5 minutes, not on every page refresh)
+
 	$now = time();
 	$last_starvation_update = (isset($_SESSION['last_starvation_update'])) ? $_SESSION['last_starvation_update'] : $now;
 	
@@ -28,8 +30,8 @@
 		$post_faction_array = array('a'=>'1 = 1', 'r'=>'state > 0', 'h'=>'state < 0', 'd'=>'state = 0'); 
 		if(!$reveal_oz) 
 		{ 
-			$post_faction_array['r'] = 'state > 0 OR state = -2';
-			$post_faction_array['h'] = 'state = -1 OR state = -3';
+			$post_faction_array['r'] = '(state > 0 OR state = -2)';
+			$post_faction_array['h'] = '(state = -1 OR state = -3)';
 		}
 		
 		$post_sort_by_array = array('ln'=>'lname', 'fn'=>'fname', 'ks'=>'kills', 'kd'=>'killed', 'fd'=>'feed', 'sd'=>'starved');
@@ -118,6 +120,7 @@
 	$ozkills = mysql_fetch_array($ozkills);
 	$ozkills = $ozkills[0];
 	
+	
 	// player query
 	if (!$reveal_oz){
 	$player_query = "SELECT pic_path,state,killed,feed,kills,fname,lname,starved FROM $table_u $faction AND state != -2 UNION ALL
@@ -125,7 +128,7 @@
 	SELECT NULL , -1 , NULL , NULL , $ozkills, 'Original',  'Zombies', NULL
 	ORDER BY $sort_by $order";
 	} else {
-	$player_query = "SELECT pic_path,state,killed,feed,kills,fname,lname,starved FROM $table_u $faction";
+	$player_query = "SELECT pic_path,state,killed,feed,kills,fname,lname,starved FROM $table_u $faction ORDER BY $sort_by $order";
 	}
 	$ret = mysql_query($player_query);
 	
