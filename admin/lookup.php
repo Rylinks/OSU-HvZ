@@ -25,7 +25,8 @@
     $results = array();
     
     if (abs($id_len - $bad_len) > 1){
-      print ('Error: id length is incorrect');
+      print ('Error: id length is incorrect<br>');
+      print('<a href=\'lookup.php\'>Go Back</a>');
       exit(0);
     }
     
@@ -52,14 +53,13 @@
       foreach ($results as $value){
         print($value.'<br>');
       }
-      print('<a href=osundead.com/\'index.php\'>Go Back</a>');
+      print('<a href=\'lookup.php\'>Go Back</a>');
       print('</body></center>');
   } else {
     ?>
     ID: <form name="lookupForm" action="lookup.php" method="post">
     <input type="text" name="id" size=20 maxlength=20><br>
     <input type="submit" name="submit" value="Lookup"><br>
-    <a href=../\'index.php\'>Go Back</a>
     </body></center>
     <?
   }

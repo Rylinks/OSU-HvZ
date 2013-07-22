@@ -58,7 +58,7 @@
 	
 	}
 	function SanitizeTimestamp($inputstring) {
-		return ereg_replace("[^A-Za-z0-9\:-.]","",$inputstring);
+		return ereg_replace("[^-A-Za-z0-9\:\. ]","",$inputstring);
 	}
 	function SanitizeWord($inputstring)
 	{
