@@ -49,22 +49,22 @@ function setTimeNow(fieldname) {
 
 </head>
 <?php
-	if($_POST['submit'] == 'Update Table Values') 
+	if($_POST['submit'] == 'Update Table Values')  // I blame Garrett
 	{
-		$n_fname = $_POST['fname']; 
-		$n_lname = $_POST['lname'];
-		$n_email = $_POST['email'];
-		$n_state = $_POST['state'];
-		$n_killed_by = $_POST['killed_by'];
-		$n_kills = $_POST['kills'];
-		$n_killed = $_POST['killed'];
-		$n_feed = $_POST['feed'];
-		$n_starved = $_POST['starved'];
-		$phone = $_POST['phone'];
-		$confirmed = $_POST['confirmed'];
-		$ozopt = $_POST['ozopt'];
-		$orientation = $_POST['orientation'];
-		$liability = $_POST['liability'];
+		$n_fname = SanitizeWord($_POST['fname']); 
+		$n_lname = SanitizeWord($_POST['lname']);
+		$n_email =  SanitizeEmail($_POST['email']);
+		$n_state = SanitizeNumber($_POST['state']);
+		$n_killed_by = SanitizeWrod($_POST['killed_by']);
+		$n_kills = SanitizeNumber($_POST['kills']);
+		$n_killed = SanitizeAlphaNum($_POST['killed']);
+		$n_feed = SanitizeTimestamp($_POST['feed']);
+		$n_starved = SanitizeTimestamp($_POST['starved']);
+		$phone = SanitizeNumber($_POST['phone']);
+		$confirmed = SanitizeNumber($_POST['confirmed']);
+		$ozopt = SanitizeNumber($_POST['ozopt']);
+		$orientation = SanitizeNumber($_POST['orientation']);
+		$liability = SanitizeNumber($_POST['liability']);
 	
 		$query = "UPDATE $table_u SET fname = '$n_fname', lname = '$n_lname', email = '$n_email', state = $n_state, killed_by = '$n_killed_by', kills = $n_kills, contact='$phone', oz_opt='$ozopt', confirmed='$confirmed', liability='$liability', orientation='$orientation'  WHERE id = '$pid'";
 		$ret = mysql_query($query);
