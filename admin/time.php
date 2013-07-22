@@ -18,7 +18,7 @@
 	if($_POST['timezone'] != null) 
 	{
 		//$com = "REPLACE INTO $table_t (zone) VALUES ('$_POST[timezone]')";
-		$com = "UPDATE $table_t SET zone = '$_POST[timezone]'";
+		$com = "UPDATE $table_t SET zone = '".ereg_replace("[A-Za-z\/]","",$_POST[timezone])."'";
 		if(!mysql_query($com,$sql))
 			die('Error: ' . mysql_error());
 		print "Time zone set";
