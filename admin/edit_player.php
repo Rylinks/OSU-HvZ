@@ -55,7 +55,7 @@ function setTimeNow(fieldname) {
 		$n_lname = SanitizeWord($_POST['lname']);
 		$n_email =  SanitizeEmail($_POST['email']);
 		$n_state = SanitizeNumber($_POST['state']);
-		$n_killed_by = SanitizeWrod($_POST['killed_by']);
+		$n_killed_by = SanitizeWord($_POST['killed_by']);
 		$n_kills = SanitizeNumber($_POST['kills']);
 		$n_killed = SanitizeAlphaNum($_POST['killed']);
 		$n_feed = SanitizeTimestamp($_POST['feed']);
