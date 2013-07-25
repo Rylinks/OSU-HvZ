@@ -22,10 +22,8 @@ class Player {
 	
 	function change($field, $value, $conditions = FALSE){ 
 		if (!$conditions){
-			//echo "UPDATE ".$GLOBALS['table_u']." SET $field = $value WHERE id='$this->id';<br>";
 			$ret = mysql_query("UPDATE ".$GLOBALS['table_u']." SET $field = $value WHERE id='$this->id';");
 		} else {
-			//echo "UPDATE ".$GLOBALS['table_u']." SET $field = $value WHERE id='$this->id' AND $conditions;<br>";
 			$ret = mysql_query("UPDATE ".$GLOBALS['table_u']." SET $field = $value WHERE id='$this->id' AND $conditions;");
 		}
 		
