@@ -119,7 +119,7 @@
 	$ozkills = mysql_query("SELECT SUM(kills) FROM $table_u where state=-2");
 	$ozkills = mysql_fetch_array($ozkills);
 	$ozkills = $ozkills[0];
-	
+	if (!$ozkills){$ozkills=0;}	
 	
 	// player query
 	if (!$reveal_oz){
@@ -130,6 +130,7 @@
 	} else {
 	$player_query = "SELECT pic_path,state,killed,feed,kills,fname,lname,starved FROM $table_u $faction ORDER BY $sort_by $order";
 	}
+	print $player_query;
 	$ret = mysql_query($player_query);
 	
 	// count query
