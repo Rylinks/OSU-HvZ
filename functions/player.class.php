@@ -69,6 +69,12 @@ class Player {
 		$this->update();
 	}
 	
+	function addFeedTime($hours, $max = 48){
+		$this->change("feed", "feed + INTERVAL $hours hours");
+		$this->change("feed", "now() + INTERVAL $max hours", "now() + INTERVAL $max hours < feed");
+		$this->update();
+	}
+	
 	function nom($feed_time, $kill_time) {
 		$this->setFeedTime($feed_time); //this will be updated to change a seperate starve field
 		
