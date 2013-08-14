@@ -106,23 +106,11 @@
 				$kill_day = time();
 			}
 			
-			if ($is_share){
-				$starve_day = $kill_day + 86400; //one day from kill
-				$feed_day = $kill_day - 86400;
-			} else {
-				$starve_day = $kill_day + 86400*2; //two days from kill
-				$feed_day = $kill_day;
-			}
-			
-			
 			$kill_time = date('Y-m-d', $kill_day) . " $hour:$minute:00";
-			$starve_time = date('Y-m-d', $starve_day) . " $hour:$minute:00";
-			$feed_time = date('Y-m-d', $feed_day) . " $hour:$minute:00";
-			
 			
 			$victim->kill($killer, $kill_time);
-			$killer->nom($feed_time, $kill_time);
-			if ($is_share){$friend->receiveShare($feed_time);}
+			$killer->nom($kill_time, $is_share);
+			if ($is_share){$friend->receiveShare($kill_time);}
 			
 			// twitter code
 				
