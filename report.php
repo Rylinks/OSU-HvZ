@@ -128,7 +128,8 @@
 		}
 		print "<a href=$PHP_SELF>Go Back</a>";
 		print "</td></tr></table>";
-		$ret = mysql_query("UPDATE $table_u SET feed = TIMESTAMP '2013-04-21 00:00:00' WHERE state < 0 AND feed < TIMESTAMP '2013-04-21 00:00:00'"); //people can't starve til monday ends
+		$starve_limit = "TIMESTAMP ".$config['game start']." + INTERVAL 2 days"
+		$ret = mysql_query("UPDATE $table_u SET feed = $starve_limit WHERE state < 0 AND feed < $starve_limit"); //people can't starve til monday ends
 	}
 	else 
 	{
