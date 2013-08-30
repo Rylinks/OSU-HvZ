@@ -6,7 +6,8 @@ function my_quick_con($config){
         $h = $config['mysql_db_host'];
         $con = mysql_connect($h, $u, $p);
 	mysql_select_db($d, $con);
-        return $con;
+	$sql= new mysqli($h,$u,$p,$d)
+        return $sql;
 }
 ?>
 
