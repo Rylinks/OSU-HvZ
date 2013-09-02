@@ -30,6 +30,7 @@ user_table = users
 admin_table = admin
 var_table = variables
 time_table = timezone
+timevar_table = times
 content_table = content
 message_table = messages
 blog_table = blog
