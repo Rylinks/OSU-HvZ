@@ -77,10 +77,7 @@ class Player {
 	
 	function nom($feed_time, $kill_time) {
 		$this->setFeedTime($feed_time); //this will be updated to change a seperate starve field
-		
-		$k=$this->data['kills'];
-		$k=$k+1;
-		$this->change('kills', $k);
+		$this->change('kills', 'kills + 1');
 		$this->update();
 	}
 
