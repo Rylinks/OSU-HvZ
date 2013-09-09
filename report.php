@@ -18,11 +18,7 @@
 	$ret = mysql_query("SELECT zone FROM $table_t");
 	while($row = mysql_fetch_array($ret))
 	   date_default_timezone_set($row['zone']);
-	   
-	$ret = mysql_query("UPDATE $table_u SET state = -4 WHERE now() > feed + INTERVAL 2 day;");
-	$ret = mysql_query("UPDATE $table_u SET starved = feed + INTERVAL 2 day WHERE state = -4;");
-	$ret = mysql_query("UPDATE $table_u SET state = 0 WHERE state = -4;");
-	$ret = mysql_query("SELECT value FROM $table_v WHERE zkey='oz-revealed';");
+
 ?>
 
 
