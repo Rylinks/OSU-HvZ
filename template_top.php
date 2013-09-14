@@ -49,7 +49,7 @@
 				header('Location:'.$PHP_SELF);
 			} else {
 				echo "You have not confirmed your account!";
-				echo "if you did not recieve the confirmation e-mail, or you already confirmed your account, e-mail us";
+				echo "if you did not recieve the confirmation e-mail, or you already confirmed your account, e-mail us at mods@osundead.com";
 				
 			}
 		} 
