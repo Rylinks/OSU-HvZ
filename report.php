@@ -121,8 +121,8 @@
 			
 			
 			$victim->kill($killer, $kill_time);
-			$killer->nom($feed_time, $kill_time);
-			if ($is_share){$friend->receiveShare($feed_time);}
+			$killer->nom($kill_time, $is_share);
+			if ($is_share){$friend->receiveShare();}
 			
 			// twitter code
 				
