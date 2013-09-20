@@ -53,11 +53,6 @@
 			} 
 			if($step == 'oz-revealed') 
 			{
-				$ret = mysql_query("SELECT kills, killed, feed FROM $table_u WHERE state = -3;"); 
-				$row = mysql_fetch_row($ret); 
-				$ret = mysql_query("UPDATE $table_u SET kills = $row[0] WHERE state = -2;"); 
-				$ret = mysql_query("UPDATE $table_u SET killed = TIMESTAMP '$row[1]' WHERE state = -2;");
-				$ret = mysql_query("UPDATE $table_u SET feed = TIMESTAMP '$row[2]' WHERE state = -2;");
 				$ret = mysql_query("DELETE FROM $table_u WHERE state = -3;");
 				$message = "The original zombie has been revealed!";
 			}

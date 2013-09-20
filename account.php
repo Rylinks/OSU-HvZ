@@ -29,7 +29,7 @@ $c_pic_path = $c_pic_path['pic_path'];
 		
 		if($pass_ret == $pass_cur) 
 		{
-			if(strlen($_POST['pass_new']) >= 4 && strlen($_POST['pass_new']) <= 20) 
+			if(strlen($_POST['pass_new']) >= 4 && strlen($_POST['pass_new']) <= 100) 
 			{
 				if($pass_new == $pass_con) 
 				{
@@ -45,7 +45,7 @@ $c_pic_path = $c_pic_path['pic_path'];
 			} 
 			else 
 			{
-				print "Your new password must be between 4 and 20 alphanumerics.<br>";
+				print "Your new password must be between 4 and 100 alphanumerics.<br>";
 				print "<a href='account.php'>Back</a>";
 			}
 		} 

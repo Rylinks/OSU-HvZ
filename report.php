@@ -106,23 +106,15 @@
 				$kill_day = time();
 			}
 			
-			if ($is_share){
-				$starve_day = $kill_day + 86400; //one day from kill
-				$feed_day = $kill_day - 86400;
-			} else {
-				$starve_day = $kill_day + 86400*2; //two days from kill
-				$feed_day = $kill_day;
-			}
-			
-			
 			$kill_time = date('Y-m-d', $kill_day) . " $hour:$minute:00";
-			$starve_time = date('Y-m-d', $starve_day) . " $hour:$minute:00";
-			$feed_time = date('Y-m-d', $feed_day) . " $hour:$minute:00";
-			
 			
 			$victim->kill($killer, $kill_time);
 			$killer->nom($kill_time, $is_share);
+<<<<<<< HEAD
 			if ($is_share){$friend->receiveShare();}
+=======
+			if ($is_share){$friend->receiveShare($kill_time);}
+>>>>>>> d76b7df9716657f94728d0397adc459fbd963f9d
 			
 			// twitter code
 				
@@ -140,7 +132,8 @@
 		}
 		print "<a href=$PHP_SELF>Go Back</a>";
 		print "</td></tr></table>";
-		$ret = mysql_query("UPDATE $table_u SET feed = TIMESTAMP '2013-04-21 00:00:00' WHERE state < 0 AND feed < TIMESTAMP '2013-04-21 00:00:00'"); //people can't starve til monday ends
+		$starve_limit = "TIMESTAMP ".$config['game start']." + INTERVAL 2 days"
+		$ret = mysql_query("UPDATE $table_u SET feed = $starve_limit WHERE state < 0 AND feed < $starve_limit"); //people can't starve til monday ends
 	}
 	else 
 	{

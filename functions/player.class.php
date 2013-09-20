@@ -67,17 +67,30 @@ class Player {
 		$this->update();
 	}
 	
-	function nom($feed_time, $kill_time) {
-		$this->setFeedTime($feed_time); //this will be updated to change a seperate starve field
-		
-		$k=$this->data['kills'];
-		$k=$k+1;
-		$this->change('kills', $k);
+	function addFeedTime($hours, $max = "now()"){
+		$this->change("feed", "feed + INTERVAL $hours hours");
+		if (max == "now()"){
+			$this->change("feed", "now()", "now() < feed");
+		} else {
+			$this->change("feed", "TIMESTAMP $max", "TIMESTAMP $max < feed")
+		}
 		$this->update();
 	}
+	
+	function nom($kill_time, $is_share) {
+		if ($is_share){
+			$this->addFeedTime(24, $kill_time)
+		} else {
+			$this->setFeedTime($kill_time); //this will be updated to change a seperate starve field
+			$k=$this->data['kills'];
+			$k=$k+1;
+			$this->change('kills', $k);
+			$this->update();
+		}
+	}
 
-	function receiveShare($feed_time){ //this exists for future email or starve field support
-		$this->setFeedTime($feed_time);
+	function receiveShare($kill_time){ //this exists for future email or starve field support
+		$this->addFeedTime(24, $kill_time);
 	}
 	
 	function __destruct(){
