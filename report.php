@@ -110,11 +110,7 @@
 			
 			$victim->kill($killer, $kill_time);
 			$killer->nom($kill_time, $is_share);
-<<<<<<< HEAD
-			if ($is_share){$friend->receiveShare();}
-=======
 			if ($is_share){$friend->receiveShare($kill_time);}
->>>>>>> d76b7df9716657f94728d0397adc459fbd963f9d
 			
 			// twitter code
 				
@@ -132,7 +128,7 @@
 		}
 		print "<a href=$PHP_SELF>Go Back</a>";
 		print "</td></tr></table>";
-		$starve_limit = "TIMESTAMP ".$config['game start']." + INTERVAL 2 days"
+		$starve_limit = "TIMESTAMP ".$config['game start']." + INTERVAL 2 days";
 		$ret = mysql_query("UPDATE $table_u SET feed = $starve_limit WHERE state < 0 AND feed < $starve_limit"); //people can't starve til monday ends
 	}
 	else 

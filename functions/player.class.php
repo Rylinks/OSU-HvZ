@@ -22,8 +22,10 @@ class Player {
 	
 	function change($field, $value, $conditions = FALSE){ 
 		if (!$conditions){
+			print "SET $field = $value WHERE id='$this->id';";
 			$ret = mysql_query("UPDATE ".$GLOBALS['table_u']." SET $field = $value WHERE id='$this->id';");
 		} else {
+                        print "SET $field = $value WHERE id='$this->id' AND $conditions";
 			$ret = mysql_query("UPDATE ".$GLOBALS['table_u']." SET $field = $value WHERE id='$this->id' AND $conditions;");
 		}
 		
@@ -68,18 +70,18 @@ class Player {
 	}
 	
 	function addFeedTime($hours, $max = "now()"){
-		$this->change("feed", "feed + INTERVAL $hours hours");
+		$this->change("feed", "feed + INTERVAL $hours hour");
 		if (max == "now()"){
 			$this->change("feed", "now()", "now() < feed");
 		} else {
-			$this->change("feed", "TIMESTAMP $max", "TIMESTAMP $max < feed")
+			$this->change("feed", "TIMESTAMP '$max'", "TIMESTAMP '$max' < feed");
 		}
 		$this->update();
 	}
 	
 	function nom($kill_time, $is_share) {
 		if ($is_share){
-			$this->addFeedTime(24, $kill_time)
+			$this->addFeedTime(24, $kill_time);
 		} else {
 			$this->setFeedTime($kill_time); //this will be updated to change a seperate starve field
 			$k=$this->data['kills'];

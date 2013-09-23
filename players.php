@@ -130,7 +130,6 @@
 	} else {
 	$player_query = "SELECT pic_path,state,killed,feed,kills,fname,lname,starved FROM $table_u $faction ORDER BY $sort_by $order";
 	}
-	print $player_query;
 	$ret = mysql_query($player_query);
 	
 	// count query

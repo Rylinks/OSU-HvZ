@@ -16,10 +16,7 @@
 	date_default_timezone_set($row['zone']);
 
 
-// update the starvation times and oz reveal (every 5 minutes, not on every page refresh)
-	$ret = mysql_query("SELECT value FROM $table_v WHERE keyword='oz-revealed';");
-	$reveal_oz = mysql_fetch_assoc($ret);
-	$reveal_oz = $reveal_oz['value'];
+	$reveal_oz = 1;
 		
 	$state_translate = array('-3'=>'horde', '-2'=>'horde (original)', '-1'=>'horde', '0'=>'deceased', '1'=>'resistance', '2'=>'resistance');
 
