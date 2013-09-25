@@ -29,7 +29,7 @@ include_once('template_top.php');
 			Your ID Number is: <b><?php print($id); ?></b>.  Please Write this down on TWO notecards or pieces of paper. 
 			<br />
 			<br />
-			If you are tagged by a zombie, then give them one of them, and keep the other on you.  
+			If you are tagged by a zombie, give them one id and keep the other on you.  
 			<br />
 			<br />
 			We have also e-mailed your ID number to you, and you can view it the My Account section as well.
